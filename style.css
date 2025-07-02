@@ -1,4 +1,4 @@
-body {
+  body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     padding: 20px;
@@ -13,7 +13,6 @@ body {
 
 div {
     font-size: 1.3rem;
-    font-weight: bold;
     margin-bottom: 20px;
 }
 
@@ -62,10 +61,11 @@ input {
 
 h1 {
     margin-top: 30px;
+    color: #388e3c;
 }
 
 #liveResult {
     font-size: 1.2rem;
     color: #333;
     margin-top: 10px;
-}
+} 
