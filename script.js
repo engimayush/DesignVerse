@@ -1,6 +1,6 @@
 
 window.addEventListener('DOMContentLoaded', function () {
-  
+
   const btn = document.getElementById("mybtn");
   btn.addEventListener("click", function () {
     document.getElementById("head").textContent = "One Tap!";
@@ -8,16 +8,15 @@ window.addEventListener('DOMContentLoaded', function () {
     alert("Error");
   });
 
-
   const btn2 = document.getElementById("dblbtn");
   btn2.addEventListener("dblclick", function () {
     document.getElementById("head").textContent = "Double Tap!";
     document.body.style.backgroundColor = "yellow";
   });
 
-  const mousebtn = document.querySelector("#mousebtn");
+  const mousebtn = document.getElementById("mousebtn");
   mousebtn.addEventListener("mouseenter", function () {
-    const name = document.querySelector("#username").value;
+    const name = document.getElementById("username").value;
 
     let display = document.getElementById("displayName");
     if (!display) {
@@ -27,28 +26,27 @@ window.addEventListener('DOMContentLoaded', function () {
       display.style.color = "blue";
       document.body.appendChild(display);
     }
+
     display.textContent = `You entered: ${name}`;
     document.body.style.backgroundColor = "skyblue";
   });
 
- 
   const mass = document.getElementById("mass");
   mass.addEventListener("blur", function () {
     alert("You left the feedback box!");
   });
 
-  
-  document.body.addEventListener("keypress", e => {
-    alert(e.keyCode);
-  });
-
-  
   const resetBtn = document.getElementById("resetbtn");
   resetBtn.addEventListener("click", function () {
     document.getElementById("head").textContent = "JAVA-SCRIPT DOM";
     document.body.style.backgroundColor = "#f0f0f0";
+    
+    const display = document.getElementById("displayName");
+    if (display) display.textContent = "";
+    
+    document.getElementById("live").value = "";
+    document.getElementById("liveResult").textContent = "";
   });
-
 
   const liveInput = document.getElementById("live");
   const liveResult = document.getElementById("liveResult");
@@ -56,7 +54,6 @@ window.addEventListener('DOMContentLoaded', function () {
     liveResult.textContent = e.target.value;
   });
 
-  
   const head = document.getElementById("head");
   head.addEventListener("mouseover", function () {
     head.style.color = "blue";
@@ -64,9 +61,22 @@ window.addEventListener('DOMContentLoaded', function () {
   head.addEventListener("mouseout", function () {
     head.style.color = "#4CAF50";
   });
+
+  window.addEventListener("DOMContentLoaded", function () {
+  const toggleBtn = document.getElementById("togglebtn");
+  const toggleText = document.getElementById("toggleText");
+
+  toggleBtn.addEventListener("click", function () {
+    if (toggleText.style.display === "none") {
+      toggleText.style.display = "block";
+      toggleBtn.textContent = "Hide Details";
+    } else {
+      toggleText.style.display = "none";
+      toggleBtn.textContent = "Show Details";
+    }
+  });
 });
 
-
-
+  });
 
 

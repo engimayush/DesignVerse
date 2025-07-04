@@ -69,3 +69,88 @@ h1 {
     color: #333;
     margin-top: 10px;
 } 
+
+#togglebtn {
+      padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+/* .solar-system {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 50px auto;
+  background: radial-gradient(circle at center, #000000 60%, #1a1a1a 100%);
+  
+}
+
+.sun {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #ffcc00, #ff9900);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 40px 20px rgba(255, 204, 0, 0.5);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate linear infinite;
+}
+
+.planet {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+
+.mercury { background: #aaa; }
+.venus   { background: #e6b800; }
+.earth   { background: #3399ff; }
+.mars    { background: #ff3300; }
+.juipter { background: #66cc00; }
+.saturn { background: #ff9900; }
+.uranus { background: #0000ff; }
+.neptune { background: #0000cc; }
+
+
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+#tooltip {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  pointer-events: none;
+  display: none;
+  z-index: 99;
+} */
+
