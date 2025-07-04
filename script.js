@@ -61,8 +61,6 @@ window.addEventListener('DOMContentLoaded', function () {
   head.addEventListener("mouseout", function () {
     head.style.color = "#4CAF50";
   });
-
-  window.addEventListener("DOMContentLoaded", function () {
   const toggleBtn = document.getElementById("togglebtn");
   const toggleText = document.getElementById("toggleText");
 
@@ -75,8 +73,6 @@ window.addEventListener('DOMContentLoaded', function () {
       toggleBtn.textContent = "Show Details";
     }
   });
-});
-
   });
 
 
