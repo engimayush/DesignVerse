@@ -1,4 +1,3 @@
-
 window.addEventListener('DOMContentLoaded', function () {
 
   const btn = document.getElementById("mybtn");
@@ -40,10 +39,10 @@ window.addEventListener('DOMContentLoaded', function () {
   resetBtn.addEventListener("click", function () {
     document.getElementById("head").textContent = "JAVA-SCRIPT DOM";
     document.body.style.backgroundColor = "#f0f0f0";
-    
+
     const display = document.getElementById("displayName");
     if (display) display.textContent = "";
-    
+
     document.getElementById("live").value = "";
     document.getElementById("liveResult").textContent = "";
   });
@@ -61,6 +60,7 @@ window.addEventListener('DOMContentLoaded', function () {
   head.addEventListener("mouseout", function () {
     head.style.color = "#4CAF50";
   });
+
   const toggleBtn = document.getElementById("togglebtn");
   const toggleText = document.getElementById("toggleText");
 
@@ -73,6 +73,75 @@ window.addEventListener('DOMContentLoaded', function () {
       toggleBtn.textContent = "Show Details";
     }
   });
+
+  const chart = document.getElementById('chart');
+  const popBtn = document.getElementById('population');
+  const langBtn = document.getElementById('languages');
+
+  function createBar(name, value) {
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+
+    const label = document.createElement('span');
+    label.textContent = name;
+
+    const fill = document.createElement('div');
+    fill.className = 'fill';
+    fill.style.width = `${value * 0.01}px`;
+    fill.textContent = value.toLocaleString();
+
+    bar.appendChild(label);
+    bar.appendChild(fill);
+    chart.appendChild(bar);
+  }
+
+  popBtn.addEventListener('click', () => {
+    chart.innerHTML = '';
+    const sorted = countries_data.sort((a, b) => b.population - a.population);
+    const top10 = sorted.slice(0, 10);
+    top10.forEach(country => {
+      createBar(country.name, country.population);
+    });
+  });
+const planets = document.querySelectorAll('.planet');
+
+planets.forEach(planet => {
+  planet.addEventListener('mouseenter', e => {
+    tooltip.textContent = e.target.getAttribute('data-name');
+    tooltip.style.display = 'block';
   });
 
+  planet.addEventListener('mousemove', e => {
+    tooltip.style.left = e.pageX + 10 + 'px';
+    tooltip.style.top = e.pageY + 10 + 'px';
+  });
 
+  planet.addEventListener('mouseleave', () => {
+    tooltip.style.display = 'none';
+  });
+});
+
+  langBtn.addEventListener('click', () => {
+    chart.innerHTML = '';
+    const languageCount = {};
+
+    countries_data.forEach(country => {
+      country.languages.forEach(language => {
+        if (languageCount[language]) {
+          languageCount[language]++;
+        } else {
+          languageCount[language] = 1;
+        }
+      });
+    });
+
+    const sortedLangs = Object.entries(languageCount).sort((a, b) => b[1] - a[1]);
+    const top10Langs = sortedLangs.slice(0, 10);
+
+    top10Langs.forEach(([language, count]) => {
+      createBar(language, count);
+    });
+  });
+});
+
+ 

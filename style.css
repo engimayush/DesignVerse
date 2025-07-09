@@ -81,7 +81,7 @@ h1 {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-/* .solar-system {
+.solar-system {
   position: relative;
   width: 600px;
   height: 600px;
@@ -129,7 +129,7 @@ h1 {
 .venus   { background: #e6b800; }
 .earth   { background: #3399ff; }
 .mars    { background: #ff3300; }
-.juipter { background: #66cc00; }
+.jupiter { background: #66cc00; }
 .saturn { background: #ff9900; }
 .uranus { background: #0000ff; }
 .neptune { background: #0000cc; }
@@ -152,5 +152,67 @@ h1 {
   pointer-events: none;
   display: none;
   z-index: 99;
-} */
+}
 
+h1 {
+  font-size: 36px;
+  color: #222;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 10px 5px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#chart {
+  margin-top: 40px;
+  width: 90%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  background-color: #f9f9f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.bar span {
+  width: 160px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+}
+
+.fill {
+  background: linear-gradient(to right, #ffa726, #fb8c00);
+  height: 28px;
+  margin-left: 10px;
+  color: #fff;
+  text-align: right;
+  padding-right: 12px;
+  line-height: 28px;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}

@@ -120,41 +120,103 @@ mainDiv.appendChild(liveResult);
 
 document.body.appendChild(mainDiv);
 
+const heading = document.createElement('h1');
+heading.textContent = 'World Countries Data';
+document.body.appendChild(heading);
 
-// const solarSystem = document.createElement('div');
-// solarSystem.className = 'solar-system';
-// document.body.appendChild(solarSystem);
+const populationBtn = document.createElement('button');
+populationBtn.textContent = 'Top 10 Populations';
+document.body.appendChild(populationBtn);
 
-// const sun = document.createElement('div');
-// sun.className = 'sun';
-// solarSystem.appendChild(sun);
+const languageBtn = document.createElement('button');
+languageBtn.textContent = 'Top 10 Languages';
+document.body.appendChild(languageBtn);
 
-// const planetsData = [
-//    { name: 'Mercury', orbitClass: 'mercury-orbit', planetClass: 'mercury', orbitSize: 120, duration: '4s', color: 'grey' },
-//    {name: 'venus', orbitClass: 'venus-orbit', planetClass: 'venus', orbitSize: 140, duration: '8s', color: 'yellow'},
-//    {name: 'earth', orbitClass: 'earth-orbit', planetClass: 'earth', orbitSize: 160, duration: '10s', color: 'blue'},
-//    {name: 'mars', orbitClass: 'mars-orbit', planetClass: 'mars', orbitClass: 180, duration: '12s', color: 'red'},
-//    {name: 'jupiter', orbitClass: 'jupiter-orbit', planetClass: 'jupiter', orbitSize: 200, duration: '14s', color: 'orange'},
-//    {name: 'saturn', orbitClass: 'saturn-orbit', planetClass: 'saturn', orbitSize: 220, duration: '16s', color: 'brown'},
-//    {name: 'uranus', orbitClass: 'uranus-orbit', planetClass: 'uranus', orbitSize: 240, duration: '18s', color: 'green'},
-//    {name: 'neptune', orbitClass: 'neptune-orbit', planetClass: 'neptune', orbitSize: 260, duration: '20s', color: 'blue'},
-//     ];
+const chart = document.createElement('div');
+chart.id = 'chart';
+document.body.appendChild(chart);
 
-//     planetsData.forEach(data => {
-//   const orbit = document.createElement('div');
-//   orbit.classList.add('orbit', data.orbitClass);
-//   orbit.style.width = data.orbitSize + "px"
-//   orbit.style.height = data.orbitSize + "px"
-//   orbit.style.animationDuration = data.duration;
+function createBar(name, value) {
+  const bar = document.createElement('div');
+  bar.className = 'bar';
+
+  const label = document.createElement('span');
+  label.textContent = name;
+
+  const fill = document.createElement('div');
+  fill.className = 'fill';
+  fill.style.width = `${value * 0.01}px`;
+  fill.textContent = value.toLocaleString();
+
+  bar.appendChild(label);
+  bar.appendChild(fill);
+  chart.appendChild(bar);
+}
+
+populationBtn.addEventListener('click', () => {
+  chart.innerHTML = '';
+  const sorted = countries_data.sort((a, b) => b.population - a.population);
+  const top10 = sorted.slice(0, 10);
+
+  top10.forEach(country => {
+    createBar(country.name, country.population);
+  });
+});
+
+languageBtn.addEventListener('click', () => {
+  chart.innerHTML = '';
+
+  const langCount = {};
+  countries_data.forEach(country => {
+    country.languages.forEach(lang => {
+      langCount[lang] = (langCount[lang] || 0) + 1;
+    });
+  });
+
+  const sortedLang = Object.entries(langCount)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
+
+  sortedLang.forEach(([lang, count]) => {
+    createBar(lang, count);
+  });
+});
+
+
+const solarSystem = document.createElement('div');
+solarSystem.className = 'solar-system';
+document.body.appendChild(solarSystem);
+
+const sun = document.createElement('div');
+sun.className = 'sun';
+solarSystem.appendChild(sun);
+
+const planetsData = [
+   { name: 'Mercury', orbitClass: 'mercury-orbit', planetClass: 'mercury', orbitSize: 120, duration: '4s'},
+   {name: 'venus', orbitClass: 'venus-orbit', planetClass: 'venus', orbitSize: 140, duration: '8s'},
+   {name: 'earth', orbitClass: 'earth-orbit', planetClass: 'earth', orbitSize: 160, duration: '10s'},
+   {name: 'mars', orbitClass: 'mars-orbit', planetClass: 'mars', orbitSize: 180, duration: '12s'},
+   {name: 'jupiter', orbitClass: 'jupiter-orbit', planetClass: 'jupiter', orbitSize: 200, duration: '14s'},
+   {name: 'saturn', orbitClass: 'saturn-orbit', planetClass: 'saturn', orbitSize: 220, duration: '16s'},
+   {name: 'uranus', orbitClass: 'uranus-orbit', planetClass: 'uranus', orbitSize: 240, duration: '18s'},
+   {name: 'neptune', orbitClass: 'neptune-orbit', planetClass: 'neptune', orbitSize: 260, duration: '20s'},
+    ];
+
+    planetsData.forEach(data => {
+  const orbit = document.createElement('div');
+  orbit.classList.add('orbit', data.orbitClass);
+  orbit.style.width = data.orbitSize + "px"
+  orbit.style.height = data.orbitSize + "px"
+  orbit.style.animationDuration = data.duration;
     
-//   const planet = document.createElement('div');
-//   planet.classList.add('planet', data.planetClass);
-//   planet.setAttribute('data-name', data.name);
+  const planet = document.createElement('div');
+  planet.classList.add('planet', data.planetClass);
+  planet.setAttribute('data-name', data.name);
 
-//   orbit.appendChild(planet);
-//   solarSystem.appendChild(orbit);
-//   });
+  orbit.appendChild(planet);
+  solarSystem.appendChild(orbit);
+  });
   
-//   const tooltip = document.createElement('div');
-// tooltip.id = 'tooltip';
-// document.body.appendChild(tooltip);
+  const tooltip = document.createElement('div');
+tooltip.id = 'tooltip';
+document.body.appendChild(tooltip);
