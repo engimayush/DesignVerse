@@ -94,7 +94,7 @@ feedbackHeading.textContent = "FEEDBACK USING BLUR EVENT";
 mainDiv.appendChild(feedbackHeading);
 
 const feedbackInput = document.createElement("input");
-feedbackInput.id = "mass";
+feedbackInput.id = "feedback"; 
 feedbackInput.placeholder = "Your feedback";
 mainDiv.appendChild(feedbackInput);
 
@@ -121,7 +121,7 @@ mainDiv.appendChild(liveResult);
 document.body.appendChild(mainDiv);
 
 const heading = document.createElement('h1');
-heading.textContent = 'World Countries Data';
+heading.textContent = '🌍 World Countries List';
 document.body.appendChild(heading);
 
 const populationBtn = document.createElement('button');
@@ -183,40 +183,74 @@ languageBtn.addEventListener('click', () => {
 });
 
 
-const solarSystem = document.createElement('div');
-solarSystem.className = 'solar-system';
-document.body.appendChild(solarSystem);
+const container = document.createElement("div");
+container.id = "container";
+document.body.appendChild(container);
 
-const sun = document.createElement('div');
-sun.className = 'sun';
-solarSystem.appendChild(sun);
+const title = document.createElement("h1");
+title.id = "title";
+title.textContent = "Calculate the Weight of an Object on a Planet";
+container.appendChild(title);
 
-const planetsData = [
-   { name: 'Mercury', orbitClass: 'mercury-orbit', planetClass: 'mercury', orbitSize: 120, duration: '4s'},
-   {name: 'venus', orbitClass: 'venus-orbit', planetClass: 'venus', orbitSize: 140, duration: '8s'},
-   {name: 'earth', orbitClass: 'earth-orbit', planetClass: 'earth', orbitSize: 160, duration: '10s'},
-   {name: 'mars', orbitClass: 'mars-orbit', planetClass: 'mars', orbitSize: 180, duration: '12s'},
-   {name: 'jupiter', orbitClass: 'jupiter-orbit', planetClass: 'jupiter', orbitSize: 200, duration: '14s'},
-   {name: 'saturn', orbitClass: 'saturn-orbit', planetClass: 'saturn', orbitSize: 220, duration: '16s'},
-   {name: 'uranus', orbitClass: 'uranus-orbit', planetClass: 'uranus', orbitSize: 240, duration: '18s'},
-   {name: 'neptune', orbitClass: 'neptune-orbit', planetClass: 'neptune', orbitSize: 260, duration: '20s'},
-    ];
+const inputGroup = document.createElement("div");
+inputGroup.className = "input-group";
 
-    planetsData.forEach(data => {
-  const orbit = document.createElement('div');
-  orbit.classList.add('orbit', data.orbitClass);
-  orbit.style.width = data.orbitSize + "px"
-  orbit.style.height = data.orbitSize + "px"
-  orbit.style.animationDuration = data.duration;
-    
-  const planet = document.createElement('div');
-  planet.classList.add('planet', data.planetClass);
-  planet.setAttribute('data-name', data.name);
+const input = document.createElement("input");
+input.type = "number";
+input.id = "mass";
+input.placeholder = "Mass in Kilograms";
 
-  orbit.appendChild(planet);
-  solarSystem.appendChild(orbit);
-  });
-  
-  const tooltip = document.createElement('div');
-tooltip.id = 'tooltip';
-document.body.appendChild(tooltip);
+const select = document.createElement("select");
+select.id = "planet";
+select.innerHTML = `
+  <option value="">--select planet--</option>
+  <option value="Mercury">Mercury</option>
+  <option value="Venus">Venus</option>
+  <option value="Earth">Earth</option>
+  <option value="Mars">Mars</option>
+  <option value="Jupiter">Jupiter</option>
+  <option value="Saturn">Saturn</option>
+  <option value="Uranus">Uranus</option>
+  <option value="Neptune">Neptune</option>
+`;
+
+const button = document.createElement("button");
+button.textContent = "Calculate Weight";
+
+inputGroup.appendChild(input);
+inputGroup.appendChild(select);
+inputGroup.appendChild(button);
+container.appendChild(inputGroup);
+
+const result = document.createElement("div");
+result.id = "result";
+container.appendChild(result);
+
+const planetImg = document.createElement("img");
+planetImg.id = "planet-image";
+container.appendChild(planetImg);
+
+
+const countriesHeading = document.createElement('h1');
+countriesHeading.textContent = '🌍 World Countries List';
+countriesHeading.style.marginTop = "40px";
+document.body.appendChild(countriesHeading);
+
+const countryInfo = document.createElement("p");
+countryInfo.id = "info";
+countryInfo.textContent = "Total Countries: 0";
+document.body.appendChild(countryInfo);
+
+const countryControls = document.createElement("div");
+countryControls.className = "controls";
+countryControls.innerHTML = `
+  <button id="startsWith">STARTING WORD</button>
+  <button id="includes">SEARCH WITH ANY WORD</button>
+  <input type="text" id="search" placeholder="Search Country..." />`;
+document.body.appendChild(countryControls);
+
+const countriesContainer = document.createElement("div");
+countriesContainer.id = "countries-container";
+countriesContainer.className = "countries-grid";
+document.body.appendChild(countriesContainer);
+
